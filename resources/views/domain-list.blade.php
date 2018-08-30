@@ -40,4 +40,7 @@
         @endif
         </tbody>
     </table>
+    @if(isset($domains) && is_object($domains))
+        {{ $domains->links() }}
+    @endif
 @endsection

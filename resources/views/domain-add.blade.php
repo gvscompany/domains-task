@@ -5,13 +5,13 @@
     <br>
     <hr>
     <div class="col-sm-12 col-md-6 offset-md-3">
-        <form action="{{ route('domain.store') }}" method="post">
+        <form action="{{ route('domain.store') }}" method="post" data-name="domain-name">
             @csrf
             <div class="form-group">
-                <label for="name">Domain name</label>
-                <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Enter domain name...">
+                <label for="add_name">Domain name (Only .com | .ru | .am)</label>
+                <input type="text" class="form-control" name="name" id="add_name" value="{{ old('name') }}" placeholder="Enter domain name...">
             </div>
-            <button type="submit" class="btn btn-primary">Save domain</button>
+            <button type="submit" id="save_btn" disabled="disabled" class="btn btn-primary">Save domain</button>
         </form>
     </div>
 @endsection

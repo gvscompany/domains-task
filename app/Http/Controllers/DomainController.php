@@ -17,7 +17,7 @@ class DomainController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $domains = Auth::user()->domains;
+            $domains = Auth::user()->domains()->orderBy('id', 'DESC')->paginate(7);
             if (view()->exists('domain-list')) {
                 return view('domain-list', compact('domains'));
             }

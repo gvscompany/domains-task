@@ -36,7 +36,6 @@ $(document).ready(function () {
                 url: '/account/dynamic-check',
                 data: {search: val},
                 success: function (data) {
-                    console.log(data);
                     var input = $('#update_name');
                     var btn = $('#update_btn');
                     if (data == 0) {
@@ -54,8 +53,36 @@ $(document).ready(function () {
             $(this).removeClass('is-valid');
             $(this).addClass('is-invalid');
         }
-
     });
     // Update form validate
+
+    // Add form validate
+    $('#add_name').on('keyup', function () {
+        var val = $(this).val();
+        if ($.trim(val).length > 0) {
+            $.ajax({
+                type: 'GET',
+                url: '/account/dynamic-check',
+                data: {search: val},
+                success: function (data) {
+                    var input = $('#add_name');
+                    var btn = $('#save_btn');
+                    if (data == 0) {
+                        input.removeClass('is-invalid');
+                        input.addClass('is-valid');
+                        btn.prop('disabled', false);
+                    } else {
+                        input.removeClass('is-valid');
+                        input.addClass('is-invalid');
+                        btn.prop('disabled', true);
+                    }
+                }
+            });
+        } else {
+            $(this).removeClass('is-valid');
+            $(this).addClass('is-invalid');
+        }
+    });
+    // Add form validate
 
 });
